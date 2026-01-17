@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awodi Abdulsamad | 3D Product Artist</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -18,17 +19,13 @@
         }
       }
     </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3, .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
         .glass {
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(16px);
@@ -45,60 +42,62 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
-        }
+        .animate-fade-in { animation: fade-in 1s ease-out forwards; }
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="selection:bg-black selection:text-white bg-[#f8f9fa] dark:bg-black transition-colors duration-500">
-    <div id="root"></div>
+
+    <nav class="fixed w-full z-50 glass px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">AWODI.3D</h1>
+        <div class="space-x-8 hidden md:flex">
+            <a href="#home" class="hover:opacity-50 transition">Home</a>
+            <a href="#work" class="hover:opacity-50 transition">Work</a>
+            <a href="#contact" class="hover:opacity-50 transition">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <h1 class="text-6xl md:text-8xl font-serif mb-4 animate-fade-in">Awodi Abdulsamad</h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 animate-fade-in delay-200">3D Product Artist & Animator</p>
+        <div class="mt-12 animate-float">
+            <a href="#work" class="px-8 py-3 bg-black text-white dark:bg-white dark:text-black rounded-full transition-transform hover:scale-105">View My Work</a>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 px-6 bg-white dark:bg-[#111]">
+        <h2 class="text-4xl font-serif text-center mb-16">Selected Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div class="glass-dark rounded-xl overflow-hidden aspect-video flex items-center justify-center">
+                <p class="text-gray-400 italic">Insert your 3D animation here</p>
+            </div>
+             <div class="glass-dark rounded-xl overflow-hidden aspect-video flex items-center justify-center">
+                <p class="text-gray-400 italic">Insert your 3D animation here</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 text-center">
+        <h2 class="text-4xl font-serif mb-8">Let's Create Something</h2>
+        <p class="mb-8 text-lg">awodi.3d@gmail.com</p>
+        <a href="mailto:awodi.3d@gmail.com" class="text-sm border-b border-black dark:border-white pb-1">GET IN TOUCH</a>
+    </section>
+
     <script>
-      // Global smooth scroll handler
-      document.addEventListener('click', function (e) {
-        const target = e.target.closest('a[href^="#"]');
-        if (target) {
-          e.preventDefault();
-          const id = target.getAttribute('href').slice(1);
-          const element = document.getElementById(id || 'home');
-          if (element) {
-            window.scrollTo({
-              top: element.offsetTop,
-              behavior: 'smooth'
-            });
-          }
-        }
+      // Smooth scroll handler
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
       });
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
